@@ -71,7 +71,7 @@ nav{
   top:50%;
   width: 300px;
   height: 30px;
-  transform: translate(100%,-50%);
+  transform: translate(50%,-50%);
   
 }
 .route{
