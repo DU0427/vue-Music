@@ -1,32 +1,44 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
+    <!--头部组件 -->
+    <Header class="header"/>
+    <!-- 主题组件依靠路由跳转实现 -->
+    <div class="main">
     <router-view/>
   </div>
+  <!-- 底部组件 -->
+  <Footer class="footer"/>
+  </div>
 </template>
+<script>
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
+export default{
+  components:{
+    Header,
+    Footer
+  }
+}
+</script>
+
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-
-nav {
-  padding: 30px;
+a{
+  text-decoration: none;
 }
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.footer{
+  position: fixed;
+  bottom: 50px;
 }
-
-nav a.router-link-exact-active {
-  color: #42b983;
+.main{ 
+  height: 100vh;
+}
+.header{
+  height: 70px;
 }
 </style>
