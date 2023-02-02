@@ -13,7 +13,7 @@ const routes = [
   {
     path: '/MyMusic',
     name: 'MyMusic',
-    component: () => import(/* webpackChunkName: "about" */ '../views/MyMusic.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/MyMv.vue')
   }
 ]
 

@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>mymusic</h1>
+    <h1>mymusic占位</h1>
   </div>
 </template>
 

@@ -1,20 +1,20 @@
 <template>
   <div id="app">
     <!--头部组件 -->
-    <Header class="header"/>
+    <Header class="header" />
     <!-- 主题组件依靠路由跳转实现 -->
     <div class="main">
-    <router-view/>
-  </div>
-  <!-- 底部组件 -->
-  <Footer class="footer"/>
+      <router-view />
+    </div>
+    <!-- 底部组件 -->
+    <Footer class="footer" />
   </div>
 </template>
 <script>
-import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
-export default{
-  components:{
+import Header from "@/components/Header.vue";
+import Footer from '@/components/Footer.vue';
+export default {
+  components: {
     Header,
     Footer
   }
@@ -23,22 +23,27 @@ export default{
 
 
 <style>
-*{
+* {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-a{
+
+a {
   text-decoration: none;
 }
-.footer{
+
+.footer {
   position: fixed;
   bottom: 50px;
 }
-.main{ 
+
+.main {
   height: 100vh;
+  width: 100vw;
 }
-.header{
+
+.header {
   height: 70px;
 }
 </style>
