@@ -2,7 +2,8 @@
   <div class="header">
     <div class="center">
       <h1>
-        <router-link to="/" class="title" exact>MUSIC</router-link>
+        <img src="../assets/logo.png" style="height:35px;width:35px;vertical-align:middle;"/>
+        <router-link to="/" class="title" style="vertical-align: middle;" exact>MUSIC</router-link>
       </h1>
       <nav>
         <router-link class="route" to="/" exact> 热门推荐歌手</router-link>
@@ -136,7 +137,7 @@ nav {
 h1 {
   float: left;
   height: 70px;
-  line-height: 70px;
+  line-height: 60px;
 }
 
 .route {

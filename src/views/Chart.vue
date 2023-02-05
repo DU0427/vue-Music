@@ -45,12 +45,11 @@ export default {
             option = {
                 title: {
                     text: '六边形能力对比图',
-                    textStyle: {
-                        fontSize: 20,
-                    },
+                    
                 },
                 legend: {
-                    data: ['华语歌手平均值', '韩语歌手平均值','欧美歌手平均值','日语歌手平均值']
+                    data: ['华语歌手平均值', '韩语歌手平均值','欧美歌手平均值','日语歌手平均值'],
+                    left:'right'
                 },
                 radar: {
                     // shape: 'circle',
@@ -164,13 +163,13 @@ export default {
 
 <style scoped>
 #main {
-    height: 100vh;
-    width: 40%;
+    height: 500px;
+    width: 50%;
     float: left;
 }
 #main1{
-    height: 100vh;
-    width: 40%;
+    height: 500px;
+    width: 50%;
     float: right;
 }
 
