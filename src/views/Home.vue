@@ -1,10 +1,7 @@
 <template>
   <div>
-    <!-- 搜索结果展示组件 -->
-    <!-- <Song v-show="!wait"/> -->
-
     <!-- 首页组件 -->
-    <div v-show="wait" class="singer">
+    <div  class="singer">
       <div class="nav">热门推荐歌手</div>
       <ul v-for="s, index in singer" :key="index">
         <li>
@@ -26,7 +23,6 @@ export default {
   name: "Home",
   data() {
     return {
-      wait: true,
       singer: {},
     };
   },
@@ -40,11 +36,6 @@ export default {
     }
   },
   mounted() {
-    /* 拿到搜索来的数据 然后将这个数据动态的渲染到页面中 */
-    // this.$bus.$on("search", (songs) => {
-    //   this.musicList = songs;
-    //   this.wait = false
-    // });
     // 获取热门歌手数据
     axios({
       url: `/top/artists?offset=0&limit=55`,
@@ -59,18 +50,6 @@ export default {
         console.log(err + '搜索出错啦！！！')
       })
   },
-  // watch:{
-  //   $route(to,from){
-  //     console.log('tototo'+to.path)
-  //     if(to.path == '/Song'){
-  //       this.wait = false
-  //     }else{
-  //       if(to.path == '/'){
-  //         this.wait=true
-  //       }
-  //     }
-  //   }
-  // }
 };
 </script>
 

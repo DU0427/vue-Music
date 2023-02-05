@@ -57,7 +57,7 @@ export default {
         method: 'post'
       })
         .then(res => {
-          console.log('mymusic',)
+          // console.log('mymusic',)
           this.mvList=res.data.data
         })
         .catch(err => {
@@ -71,6 +71,10 @@ export default {
 .about{
   position: relative;
   margin: 20px 50px;
+  height: 100vh;
+  width: 100vw;
+  max-width: 1200px;
+  max-height: 800px;
 }
 li{
   position: relative;

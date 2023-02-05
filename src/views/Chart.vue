@@ -44,12 +44,14 @@ export default {
 
             option = {
                 title: {
-                    text: '六边形能力对比图',
-                    
+                    text: '歌手综合能力对比图',
+                    left:'center'
                 },
                 legend: {
+                    show:'true',
                     data: ['华语歌手平均值', '韩语歌手平均值','欧美歌手平均值','日语歌手平均值'],
-                    left:'right'
+                    left:'right',
+                    orient: 'vertical',
                 },
                 radar: {
                     // shape: 'circle',
@@ -77,6 +79,7 @@ export default {
                         symbol: 'node',
                         center: ['50%', '50%'],
                         // radius: 200,
+                        
                         data: [
                             {
                                 value: [6000, 15000, 23000, 35000, 50000, 18000],
@@ -110,12 +113,12 @@ export default {
 
             option = {
                 title: {
-                    text: '各种音乐风格喜爱人数',
+                    text: '各种音乐风格听众人数',
                     subtext: '国内数据',
                     left: 'center'
                 },
                 tooltip: {
-                    trigger: 'item'
+                    trigger: 'item',
                 },
                 legend: {
                     orient: 'vertical',
@@ -126,15 +129,23 @@ export default {
                         name: '音乐风格',
                         type: 'pie',
                         radius: '50%',
+                        roseType:'radius',
+                        selectedMode: 'multiple',
+                        label:{
+                            show:true,
+                            formatter(arg){
+                                return arg.name+'听众人数'+arg.value+'万人'+'\n'+'占比'+ arg.percent+'%'
+                            }
+                        },
                         data: [
-                            { value: 1048, name: '说唱' },
-                            { value: 888, name: '流行' },
-                            { value: 580, name: '摇滚' },
-                            { value: 484, name: '民谣' },
-                            { value: 300, name: '爵士' },
-                            { value: 500, name: '纯音乐' },
-                            { value: 220, name: '电子' },
-                            { value: 110, name: '古典' },
+                            { value: 9483, name: '说唱' },
+                            { value: 8888, name: '流行' },
+                            { value: 7804, name: '摇滚' },
+                            { value: 6846, name: '民谣' },
+                            { value: 5003, name: '爵士' },
+                            { value: 4080, name: '纯音乐' },
+                            { value: 3240, name: '电子' },
+                            { value: 2190, name: '古典' },
 
                         ],
                         emphasis: {
@@ -151,7 +162,7 @@ export default {
             option && myChart.setOption(option);
         },
         singerPk() {
-            this.Chart()
+            this.Chart
         }
     },
     mounted() {
@@ -166,11 +177,13 @@ export default {
     height: 500px;
     width: 50%;
     float: left;
+    margin-top: 30px;
 }
 #main1{
     height: 500px;
     width: 50%;
     float: right;
+    margin-top: 30px;
 }
 
 .chart {

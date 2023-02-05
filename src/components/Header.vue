@@ -37,9 +37,6 @@ export default {
   data() {
     return {
       input: "",
-      home: "",
-      mv: "",
-      chart: "",
     };
   },
   methods: {
@@ -48,48 +45,25 @@ export default {
       if (typeof s == "object" && this.input === "") {
         alert("输入为空！！！请重新输入");
       } else {
-        this.input=null
         // 控制路由跳转到/Song
-        this.$router.push({ path: "/Song" });
+        this.$router.push({ path: "/Song" })
         axios({
-          url: `/cloudsearch?keywords=${
-            this.input || s
-          }&limit=88` /**根据输入内容搜索歌曲 歌单 专辑 艺人等等 */,
+          url: `/cloudsearch?keywords=${  this.input || s}&limit=88` /**根据输入内容搜索歌曲 歌单 专辑 艺人等等 */,
           method: "post",
         })
           .then((res) => {
             /* 得到了根据搜索的来的信息 将这些信息利用全局事件总线传递给Song组件 */
             // console.log("我拿到的数据：", res.data.result.songs[0])
             this.$bus.$emit("search", res.data.result.songs);
+
+            // 将输入框清空
+            this.input = null
           })
           .catch((err) => {
             console.log(err + "搜索出错啦！！！");
           });
       }
     },
-  },
-  watch: {
-    // // 通过监视路径的变化来变化导航栏的样式
-    // $route(to){
-    //   console.log(to.path+'header toto')
-    //   if(to.path == '/' || to.path=='/Song'){
-    //     this.home='Selected'
-    //     this.mv=''
-    //     this.chart=''
-    //   }else{
-    //     if(to.path == '/MyMv'){
-    //       this.mv = 'Selected'
-    //       this.home=''
-    //       this.chart=''
-    //     }else{
-    //       if(to.path == '/Chart'){
-    //         this.chart = 'Selected'
-    //         this.home=''
-    //         this.mv=''
-    //       }
-    //     }
-    //   }
-    // }
   },
   mounted() {
     this.$bus.$on("singer", this.search);
