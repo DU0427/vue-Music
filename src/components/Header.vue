@@ -1,5 +1,9 @@
 <template>
   <div class="header">
+    <!-- <el-alert
+    title="成功提示的文案"
+    type="success">
+  </el-alert> -->
     <div class="center">
       <h1>
         <img src="../assets/logo.png" style="height:35px;width:35px;vertical-align:middle;"/>
@@ -20,6 +24,7 @@
           placeholder="请输入内容"
           @keyup.enter="search($event)"
           v-model="input"
+          :plain="true"
         />
         <span class="bottom"></span>
         <span class="right"></span>
@@ -41,9 +46,12 @@ export default {
   },
   methods: {
     search(...[s]) {
-      // console.log('事件被触发', this.input,typeof(s),( (s===undefined) &&(this.input === '')))
+      // console.log('事件被触发', this.input,typeof(s),( typeof s == "object" && this.input === ""))
       if (typeof s == "object" && this.input === "") {
-        alert("输入为空！！！请重新输入");
+        this.$message({
+          message:'输入为空！！！请检查输入后再尝试',
+          type:'warning'
+        })
       } else {
         // 控制路由跳转到/Song
         this.$router.push({ path: "/Song" })
@@ -52,15 +60,19 @@ export default {
           method: "post",
         })
           .then((res) => {
+            // 提示正在搜索。。。
+            this.$message({
+              message:'正在为您努力搜索歌曲中......',
+              type:'success'
+            })
             /* 得到了根据搜索的来的信息 将这些信息利用全局事件总线传递给Song组件 */
             // console.log("我拿到的数据：", res.data.result.songs[0])
             this.$bus.$emit("search", res.data.result.songs);
-
             // 将输入框清空
             this.input = null
           })
           .catch((err) => {
-            console.log(err + "搜索出错啦！！！");
+            this.$message.error('搜索出错啦！！请稍后再试')                  
           });
       }
     },

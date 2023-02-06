@@ -44,6 +44,10 @@ export default {
                         url: res.data.data[0].url,
                         pic: picUrl,
                     };
+                    this.$message({
+                        message:'音乐马上就来',
+                        type:'success'
+                    })
                 })
                 .catch((err) => {
                     console.log(err + "搜索歌曲出错啦！");
@@ -64,7 +68,7 @@ export default {
                     this.$bus.$emit("musicUrl", this.play);
                 })
                 .catch((err) => {
-                    console.log(err + "搜索歌词出错啦！")
+                    this.$message.error('歌词搜索出了点小错误啦   请再尝试点击一下~~~~')    
                 });
         }
     },
@@ -75,7 +79,7 @@ export default {
         });
     },
     beforeDestroy() {
-        console.log('清除自定义事件')
+        // 解绑自定义事件
         this.$bus.$off('search')
     },
 

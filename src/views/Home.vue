@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 首页组件 -->
-    <div  class="singer">
+    <div v-show="wait" class="singer">
       <div class="nav">热门推荐歌手</div>
       <ul v-for="s, index in singer" :key="index">
         <li>
@@ -17,16 +17,19 @@
 
 <script>
 import axios from "@/plugins/axios";
+import Song from "./Song.vue";
 
 
 export default {
   name: "Home",
   data() {
     return {
+      wait: true,
       singer: {},
     };
   },
   components: {
+    Song
   },
   methods: {
     singerName(name) {
@@ -48,8 +51,10 @@ export default {
       })
       .catch(err => {
         console.log(err + '搜索出错啦！！！')
+        this.$message.error('页面有点错误哟！！请过段时间再访问')    
       })
   },
+
 };
 </script>
 

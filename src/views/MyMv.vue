@@ -10,7 +10,7 @@
       <li @click="mvPlay(m.id)">
         <img :src="m.cover"/><br/>
         <div class="playIco"></div>
-        MV名称：{{ m.name }}
+        MV名称:{{ m.name }}
         <div class="playBack"></div>
       </li>
     </ul>
@@ -44,10 +44,13 @@ export default {
           console.log('MV',res.data.data.url)
           this.mvUrl=res.data.data.url
           this.mvShow=false
-
+          this.$message({
+            message:'MV马上就来',
+            type:'success'
+          })
         })
         .catch(err => {
-          console.log(err+'搜索出错啦！！！')
+          this.$message.error('mv搜索出错啦 请稍后再试')
         })
     }
   },
@@ -71,10 +74,6 @@ export default {
 .about{
   position: relative;
   margin: 20px 50px;
-  height: 100vh;
-  width: 100vw;
-  max-width: 1200px;
-  max-height: 800px;
 }
 li{
   position: relative;

@@ -17,6 +17,14 @@ export default {
   components: {
     Header,
     Footer
+  },
+  mounted(){
+    this.$message({
+      message:'欢迎您来到我的作品，如遇卡顿问题请耐心等待或者刷新重试，后续我将会不断更新改进',
+      type:'success',
+      duration:8000,
+      showClose:true
+    })
   }
 }
 </script>
